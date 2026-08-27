@@ -17,13 +17,11 @@ return new class extends Migration
             $table->softDeletes();
 
             $table->string('titulo', 50);
-            $table->string('email', 50)->nullable;
-            $table->decimal('preco', 12,2);
+            $table->string('email', 50)->nullable();
+            $table->decimal('preco', 12, 2);
             $table->decimal('area', 8, 2);
-            $table->string('telefone' 20);
+            $table->string('telefone', 20);
             $table->text('descricao');
-
-
         });
     }
 

@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Anuncio;
 use Illuminate\Database\Seeder;
 
 class AnuncioSeeder extends Seeder
@@ -12,6 +12,6 @@ class AnuncioSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        Anuncio::factory(10)->create();
     }
 }
