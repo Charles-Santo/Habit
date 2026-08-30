@@ -21,6 +21,7 @@ class Anuncio extends Model
         'email',
         'preco',
         'area',
+        'user_id',
         'telefone',
         'descricao',
     ];
@@ -34,5 +35,10 @@ class Anuncio extends Model
             'preco' => 'decimal:2',
             'area' => 'decimal:2',
         ];
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

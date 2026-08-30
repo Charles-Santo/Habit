@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Anuncio;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -22,8 +23,10 @@ class AnuncioFactory extends Factory
             'email' => fake()->safeEmail(),
             'preco' => fake()->randomFloat(2, 80000, 950000),
             'area' => fake()->randomFloat(2, 25, 350),
+            'user_id' => User::factory(),
             'telefone' => fake()->numerify('(##) #####-####'),
             'descricao' => fake()->paragraph(),
+            
         ];
     }
 }
