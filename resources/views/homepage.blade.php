@@ -1,37 +1,70 @@
 @extends('layouts.main_layout')
 
-@section('titulo', 'Anúncios')
+@section('titulo', 'Habit - Anúncios')
 
 @section('conteudo')
-    <h1>Anúncios disponíveis</h1>
+    @include('top_bar')
 
-    <a href="{{ url('/') }}" class="logo">Imobiliária</a>
-    <br></br>
-    <a href="{{ route('anuncios.create') }}" class="btn">+ Novo Anúncio</a>
-
-    @forelse ($anuncios as $anuncio)
-        <div class="card">
-            <h2>{{ $anuncio->titulo }}</h2>
-            <div class="preco">R$ {{ number_format($anuncio->preco, 2, ',', '.') }}</div>
-            <div class="info">Área: {{ number_format($anuncio->area, 2, ',', '.') }} m²</div>
-            <div class="info">Telefone: {{ $anuncio->telefone }}</div>
-            @if ($anuncio->email)
-                <div class="info">E-mail: {{ $anuncio->email }}</div>
+    <div class="container py-5">
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-4">
+            <h1 class="text-dark fw-bold m-0">Anúncios disponíveis</h1>
+            @if(session('user.is_anunciante'))
+                <a href="{{ route('anuncios.create') }}" class="btn btn-dark rounded-pill border border-dark px-4 fw-bold">
+                    + Novo Anúncio
+                </a>
             @endif
-            <p>{{ $anuncio->descricao }}</p>
-
-            <div class="acoes">
-                <a href="{{ route('anuncios.edit', $anuncio) }}" class="btn-editar">Editar</a>
-
-                <form action="{{ route('anuncios.destroy', $anuncio) }}" method="POST" style="display:inline"
-                      onsubmit="return confirm('Excluir este anúncio?')">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn-excluir">Excluir</button>
-                </form>
-            </div>
         </div>
-    @empty
-        <p>Nenhum anúncio cadastrado ainda.</p>
-    @endforelse
+
+        <div class="row row-cols-1 g-4">
+            @forelse ($anuncios as $anuncio)
+                <div class="col">
+                    <div class="card bg-white border border-dark rounded-4 p-4 shadow-sm h-100">
+                        <div class="card-body d-flex flex-column p-0">
+                            <h4 class="card-title text-dark fw-bold mb-2">{{ $anuncio->titulo }}</h4>
+
+                            <h5 class="text-dark fw-bolder mb-4">R$ {{ number_format($anuncio->preco, 2, ',', '.') }}</h5>
+
+                            <div class="d-flex flex-column flex-md-row gap-md-4 mb-3">
+                                <p class="card-text mb-1 text-dark"><strong>Área:</strong>
+                                    {{ number_format($anuncio->area, 2, ',', '.') }} m²</p>
+                                <p class="card-text mb-1 text-dark"><strong>Telefone:</strong> {{ $anuncio->telefone }}</p>
+                            </div>
+
+                            <p class="card-text text-dark mt-2 mb-4 text-truncate" style="max-height: 3rem;">
+                                {{ $anuncio->descricao }}</p>
+
+                            <div
+                                class="mt-auto d-flex flex-wrap justify-content-between align-items-center gap-3 pt-3 border-top border-dark">
+                                <a href="{{ route('anuncios.mostrar', ['id' => \App\Services\Operations::encryptId($anuncio->id)]) }}"
+                                    class="btn btn-dark rounded-pill border border-dark fw-bold px-4">Ver Detalhes</a>
+                                @if (session()->has('user'))
+                                    @if ($anuncio->user_id == session('user')['id'])
+                                        <div class="d-flex gap-2">
+                                            <a href="{{ route('anuncios.edit', ['id' => \App\Services\Operations::encryptId($anuncio->id)]) }}"
+                                                class="btn btn-outline-dark rounded-pill border border-dark fw-bold px-4">Editar</a>
+
+                                            <form action="{{ route('anuncios.delete') }}" method="POST"
+                                                onsubmit="return confirm('Excluir este anúncio?')">
+                                                @csrf
+                                                <input type="hidden" name="anuncio_id"
+                                                    value="{{ \App\Services\Operations::encryptId($anuncio->id) }}">
+                                                <button type="submit"
+                                                    class="btn btn-outline-danger rounded-pill border border-danger fw-bold px-4">Excluir</button>
+                                            </form>
+                                        </div>
+                                    @endif
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @empty
+                <div class="col-12">
+                    <div class="alert bg-white border border-dark rounded-4 text-dark text-center fw-bold p-4">
+                        Nenhum anúncio cadastrado ainda.
+                    </div>
+                </div>
+            @endforelse
+        </div>
+    </div>
 @endsection

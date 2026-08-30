@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->softDeletes();
-
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('titulo', 50);
             $table->string('email', 50)->nullable();
             $table->decimal('preco', 12, 2);
@@ -32,4 +32,5 @@ return new class extends Migration
     {
         Schema::dropIfExists('anuncios');
     }
+    
 };

@@ -6,19 +6,14 @@ use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class DatabaseSeeder extends Seeder
-{
-    use WithoutModelEvents;
 
+class UserSeeder extends Seeder
+{
     /**
-     * Seed the application's database.
+     * Run the database seeds.
      */
     public function run(): void
     {
-
-        $this->call([
-            AnuncioSeeder::class,
-            UserSeeder::class,
-        ]);
+        User::factory()->count(3)->create();
     }
 }
