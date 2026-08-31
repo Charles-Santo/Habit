@@ -21,7 +21,9 @@ Route::middleware([CheckIsLogged::class])->group(function () {
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/anuncios/detalhes/{id}', [MainController::class, 'mostrar'])->name('anuncios.mostrar');
 });
+
 Route::get('/', [MainController::class, 'index'])->name('home');
+
 Route::middleware([CheckIsNotLogged::class])->group(function () {
 
     Route::get('/login', [AuthController::class, 'login'])->name('login');

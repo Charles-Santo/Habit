@@ -12,7 +12,6 @@ class Anuncio extends Model
     use HasFactory, SoftDeletes;
 
     /**
-     * Atributos que podem ser preenchidos em massa (create/update).
      *
      * @var list<string>
      */
