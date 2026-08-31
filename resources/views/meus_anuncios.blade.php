@@ -24,7 +24,8 @@
 
                             <div class="d-flex flex-column flex-md-row gap-md-4 mb-3">
                                 <p class="card-text mb-1 text-dark"><strong>Área:</strong>
-                                    {{ number_format($anuncio->area, 2, ',', '.') }} m²</p>
+                                    {{ number_format($anuncio->area, 2, ',', '.') }} m²
+                                </p>
                                 <p class="card-text mb-1 text-dark"><strong>Telefone:</strong> {{ $anuncio->telefone }}</p>
                                 @if ($anuncio->email)
                                     <p class="card-text mb-1 text-dark"><strong>E-mail:</strong> {{ $anuncio->email }}</p>

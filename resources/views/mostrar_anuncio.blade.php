@@ -47,7 +47,7 @@
                                  {{ $anuncio->telefone }}
                             
                             @if ($anuncio->email)
-                                    ✉️ {{ $anuncio->email }}
+                                    | E-mail: {{ $anuncio->email }}
                             @endif
                         </div>
 

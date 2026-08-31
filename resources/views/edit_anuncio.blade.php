@@ -4,7 +4,7 @@
 
 @section('conteudo')
     @include('top_bar')
-    
+
     <div class="container py-5 d-flex justify-content-center">
         <div class="card bg-white border border-dark rounded-4 p-4 p-md-5 shadow-sm" style="width: 100%; max-width: 600px;">
             <h1 class="text-center text-dark fw-bold mb-4">Editar Anúncio</h1>
@@ -15,7 +15,9 @@
 
                 <div class="mb-3">
                     <label for="titulo" class="form-label text-dark fw-bold">Título</label>
-                    <input type="text" id="titulo" name="titulo" class="form-control border-dark rounded-4 p-2 @error('titulo') is-invalid @enderror" maxlength="50" value="{{ old('titulo', $anuncio->titulo) }}" required>
+                    <input type="text" id="titulo" name="titulo"
+                        class="form-control border-dark rounded-4 p-2 @error('titulo') is-invalid @enderror" maxlength="50"
+                        value="{{ old('titulo', $anuncio->titulo) }}">
                     @error('titulo')
                         <div class="text-danger small mt-1 fw-bold">{{ $message }}</div>
                     @enderror
@@ -23,16 +25,22 @@
 
                 <div class="mb-3">
                     <label for="email" class="form-label text-dark fw-bold">E-mail (opcional)</label>
-                    <input type="email" id="email" name="email" class="form-control border-dark rounded-4 p-2 @error('email') is-invalid @enderror" maxlength="50" value="{{ old('email', $anuncio->email) }}">
+                    <input type="email" id="email" name="email"
+                        class="form-control border-dark rounded-4 p-2 @error('email') is-invalid @enderror" maxlength="50"
+                        value="{{ old('email', $anuncio->email) }}">
+
                     @error('email')
                         <div class="text-danger small mt-1 fw-bold">{{ $message }}</div>
                     @enderror
+
                 </div>
 
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <label for="preco" class="form-label text-dark fw-bold">Preço (R$)</label>
-                        <input type="number" step="0.01" min="0" id="preco" name="preco" class="form-control border-dark rounded-4 p-2 @error('preco') is-invalid @enderror" value="{{ old('preco', $anuncio->preco) }}" required>
+                        <input type="number" step="0.01" min="0" id="preco" name="preco"
+                            class="form-control border-dark rounded-4 p-2 @error('preco') is-invalid @enderror"
+                            value="{{ old('preco', $anuncio->preco) }}">
                         @error('preco')
                             <div class="text-danger small mt-1 fw-bold">{{ $message }}</div>
                         @enderror
@@ -40,7 +48,9 @@
 
                     <div class="col-md-6 mb-3">
                         <label for="area" class="form-label text-dark fw-bold">Área (m²)</label>
-                        <input type="number" step="0.01" min="0" id="area" name="area" class="form-control border-dark rounded-4 p-2 @error('area') is-invalid @enderror" value="{{ old('area', $anuncio->area) }}" required>
+                        <input type="number" step="0.01" min="0" id="area" name="area"
+                            class="form-control border-dark rounded-4 p-2 @error('area') is-invalid @enderror"
+                            value="{{ old('area', $anuncio->area) }}">
                         @error('area')
                             <div class="text-danger small mt-1 fw-bold">{{ $message }}</div>
                         @enderror
@@ -49,7 +59,9 @@
 
                 <div class="mb-3">
                     <label for="telefone" class="form-label text-dark fw-bold">Telefone</label>
-                    <input type="tel" id="telefone" name="telefone" class="form-control border-dark rounded-4 p-2 @error('telefone') is-invalid @enderror" maxlength="20" value="{{ old('telefone', $anuncio->telefone) }}" required>
+                    <input type="tel" id="telefone" name="telefone"
+                        class="form-control border-dark rounded-4 p-2 @error('telefone') is-invalid @enderror"
+                        maxlength="20" value="{{ old('telefone', $anuncio->telefone) }}">
                     @error('telefone')
                         <div class="text-danger small mt-1 fw-bold">{{ $message }}</div>
                     @enderror
@@ -57,13 +69,15 @@
 
                 <div class="mb-4">
                     <label for="descricao" class="form-label text-dark fw-bold">Descrição</label>
-                    <textarea id="descricao" name="descricao" rows="5" class="form-control border-dark rounded-4 p-2 @error('descricao') is-invalid @enderror" required>{{ old('descricao', $anuncio->descricao) }}</textarea>
+                    <textarea id="descricao" name="descricao" rows="5"
+                        class="form-control border-dark rounded-4 p-2 @error('descricao') is-invalid @enderror">{{ old('descricao', $anuncio->descricao) }}</textarea>
                     @error('descricao')
                         <div class="text-danger small mt-1 fw-bold">{{ $message }}</div>
                     @enderror
                 </div>
 
-                <button type="submit" class="btn btn-dark w-100 rounded-pill border border-dark py-3 fw-bold fs-5">Salvar alterações</button>
+                <button type="submit" class="btn btn-dark w-100 rounded-pill border border-dark py-3 fw-bold fs-5">Salvar
+                    alterações</button>
             </form>
         </div>
     </div>

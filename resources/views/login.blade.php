@@ -6,10 +6,11 @@
     <div class="container py-5 d-flex justify-content-center align-items-center" style="min-height: 80vh;">
         <div class="card bg-white border border-dark rounded-4 p-4 p-md-5 shadow-sm" style="width: 100%; max-width: 450px;">
             <a href="{{ route('home') }}" class="text-decoration-none">
-            <div class="d-flex justify-content-center align-items-center mb-3 gap-2">
-                <img src="{{ asset('assets/img/icon.png') }}" alt="Ícone Habit" style="height: 50px; width: 50px; object-fit: contain;">
-                <h1 class="text-dark fw-bolder mb-0 m-0">Habit</h1>
-            </div>
+                <div class="d-flex justify-content-center align-items-center mb-3 gap-2">
+                    <img src="{{ asset('assets/img/icon.png') }}" alt="Ícone Habit"
+                        style="height: 50px; width: 50px; object-fit: contain;">
+                    <h1 class="text-dark fw-bolder mb-0 m-0">Habit</h1>
+                </div>
             </a>
             <div class="text-center mb-4">
                 <h5 class="text-dark fw-bold mb-1">Bem-vindo de volta!</h5>
